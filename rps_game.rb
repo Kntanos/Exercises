@@ -6,21 +6,15 @@ class Game
       end
   
       def play()
-        puts "You played #{person_1.choice} and Computer played #{person_2.choice}." # everywhere in this method person_1 is player_1 and person_2 is player_2 
-          if person_1.choice == "paper" && person_2.choice == "rock" # I can call the variable person_1.choice, because it is in effect player_1.choice
-              puts "#{person_1.name} Wins!" # I can call the variable person_1.name, because it is in effect player_1.name. Same for person_2
-            elsif  person_1.choice == "paper" && person_2.choice == "scissors"
-              puts "#{person_2.name} wins!"
-            elsif  person_1.choice == "rock" && person_2.choice == "paper"
-              puts "#{person_2.name} wins!"
-            elsif  person_1.choice == "rock" && person_2.choice == "scissors"
-              puts "#{person_1.name} Wins!"
-            elsif  person_1.choice == "scissors" && person_2.choice == "paper"
-              puts "#{person_1.name} Wins!"
-            elsif  person_1.choice == "scissors" && person_2.choice == "rock"
-              puts "#{person_2.name} wins!"
-            else puts "It's a draw!"
-            end
+        puts "You played #{person_1.choice} and Computer played #{person_2.choice}."
+        combo = { "scissors" => "paper", "paper" => "rock", "rock" => "scissors" }
+        if person_1.choice == person_2.choice
+          puts "It's a draw!"
+        elsif combo[person_1.choice] == person_2.choice
+          puts "Kostas won!"
+        else
+          puts "Computer won!"
+        end
       end
   end
   
@@ -41,5 +35,4 @@ class Game
   player_2 = Player.new("Computer")
   
   game = Game.new(player_1, player_2)  # gives objects player_1 and player_2 of class Player as arguments to a new instance object of class Game
-  puts "You played #{player_1.choice} and Computer played #{player_2.choice}."
   game.play()
