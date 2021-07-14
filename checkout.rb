@@ -6,7 +6,7 @@ class Basket
 
     def add_item(item)
         list[item.name] = item.price
-        puts "You have added #{item.name}, for £#{'%.2f' % item.price}, to your basket."
+        puts "You have added #{item.name}, for £#{'%.2f' % item.price}, to your basket!."
     end
 
     def total
